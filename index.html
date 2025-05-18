@@ -2,68 +2,73 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Korus' Chess</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Welcome to Korus' Website for Chess Players</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      font-family: 'Georgia', serif;
       margin: 0;
-    }
-    .welcome {
-      background-color: #fff;
-      padding: 40px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-    h1 {
+      padding: 0;
+      line-height: 1.6;
+      background-color: #f8f9fa;
       color: #333;
     }
-  </style>
-</head>
-<body>
-  <div class="welcome">
-    <h1>Welcome to the Korus' Chess for all players</h1>
-  </div>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>My GitHub Page</title>
-  <style>
-    #myImage {
-      display: none;
-      width: 300px;
+
+    header {
+      background-color: #343a40;
+      color: #fff;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    main {
+      padding: 2rem;
+    }
+
+    ul {
+      font-style: italic;
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+      list-style-type: square;
+    }
+
+    section.image-section {
+      margin-top: 100vh; /* Ensures you need to scroll */
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+
+    .chess-image {
+      width: 50%;
+      max-width: 600px;
+      height: auto;
       border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
   </style>
 </head>
 <body>
 
-  <h1>Welcome to My GitHub Page</h1>
+  <header>
+    <h1>Welcome to Korus' Website for Chess Players</h1>
+  </header>
 
-  <p>Scroll down to see my image!</p>
+  <main>
+    <ul>
+      <li>This website will bring beginner tips and be better chess player.</li>
+      <li>How to build opening repertoire for intermediate and advanced players.</li>
+      <li>Friendly UI to learn chess.</li>
+    </ul>
+  </main>
 
-  <div style="height: 1000px;"></div> <!-- Spacer to allow scrolling -->
-
-  <img id="myImage" src="my-photo.jpg" alt="My Personal Photo" />
-
-  <script>
-    window.addEventListener('scroll', () => {
-      const triggerHeight = 500; // change as needed
-      if (window.scrollY > triggerHeight) {
-        document.getElementById('myImage').style.display = 'block';
-      }
-    });
-  </script>
+  <section class="image-section">
+    <img 
+      src="https://github.com/Korus69/index.html/raw/main/thumbnails66999.jpeg" 
+      alt="Chess Image" 
+      class="chess-image"
+    >
+  </section>
 
 </body>
 </html>
-
-<img src="images/thumbnails66999.jpeg" alt="My photo" />
