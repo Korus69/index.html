@@ -23,7 +23,6 @@
       animation: fadeOut 2s ease-in-out 3s forwards;
     }
 
-    /* Text animation (scale & glow) */
     #intro span {
       animation: zoomGlow 2s ease-in-out;
     }
@@ -52,31 +51,38 @@
       }
     }
 
-    /* Hide main content initially */
     #main {
       display: none;
     }
 
-    /* Show main content after intro */
     body.loaded #main {
       display: block;
     }
-  </style>
-</head>
-<body>
-  <!-- Intro animation -->
-  <div id="intro"><span>Korustech</span></div>
 
-  <!-- Your existing content goes here -->
-  <div id="main">
+    /* Centered Get Started Button */
+    .get-started-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80vh;
+      text-align: center;
+    }
 
- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Welcome to Korus' Website for Chess Players</title>
-  <style>
+    .get-started-button {
+      padding: 15px 30px;
+      font-size: 20px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .get-started-button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Existing page styles */
     body {
       font-family: 'Georgia', serif;
       margin: 0;
@@ -106,7 +112,7 @@
     }
 
     section.image-section {
-      margin-top: 100vh; /* Ensures you need to scroll */
+      margin-top: 100vh;
       text-align: center;
       padding: 4rem 2rem;
     }
@@ -121,33 +127,46 @@
   </style>
 </head>
 <body>
+  <!-- Intro animation -->
+  <div id="intro"><span>Korustech</span></div>
 
-  <header>
-    <h1>Welcome to Korus' Website for Chess Players</h1>
-  </header>
+  <!-- Main content -->
+  <div id="main">
 
-  <main>
-    <ul>
-      <li>This website will bring beginner tips and tips on how to be better chess player.</li>
-      <li>How to build a strong opening repertoire for intermediate and advanced players.</li>
-      <li>Friendly UI to learn chess.</li>
-    </ul>
-  </main>
+    <!-- Get Started Button Section -->
+    <div class="get-started-container">
+      <a href="#content" class="get-started-button">Get Started</a>
+    </div>
 
-<!-- Image Section at Bottom -->
-<div style="text-align:center; margin-top:100px;">
-  <h2>STAY TUNED FOR FUTURE UPDATES!</h2>
-<img src="images/thumbnails66999.jpeg" alt="My Uploaded Image">
-</div>
-  
+    <!-- Hidden anchor for button scroll -->
+    <div id="content"></div>
+
+    <header>
+      <h1>Welcome to Korus' Website for Chess Players</h1>
+    </header>
+
+    <main>
+      <ul>
+        <li>This website will bring beginner tips and tips on how to be better chess player.</li>
+        <li>How to build a strong opening repertoire for intermediate and advanced players.</li>
+        <li>Friendly UI to learn chess.</li>
+      </ul>
+    </main>
+
+    <!-- Image Section -->
+    <div style="text-align:center; margin-top:100px;">
+      <h2>STAY TUNED FOR FUTURE UPDATES!</h2>
+      <img src="images/thumbnails66999.jpeg" alt="My Uploaded Image">
+    </div>
+
   </div>
 
   <script>
-    // After 6 seconds (animation + fade), show main content
+    // After 6 seconds (intro animation + fade), show main content
     window.addEventListener("load", () => {
       setTimeout(() => {
         document.body.classList.add("loaded");
-      }, 6000); // total animation time
+      }, 6000);
     });
   </script>
 </body>
