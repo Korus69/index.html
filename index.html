@@ -60,34 +60,12 @@
       color: #333;
     }
 
-    #main, #innerPage {
+    #homepage, #innerPage {
       display: none;
     }
 
-    body.loaded #getStarted {
-      display: flex;
-    }
-
-    #getStarted {
-      height: 100vh;
-      display: none;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .get-started-button {
-      padding: 15px 30px;
-      font-size: 20px;
-      background-color: #007bff;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      transition: background-color 0.3s ease;
-      cursor: pointer;
-    }
-
-    .get-started-button:hover {
-      background-color: #0056b3;
+    body.loaded #homepage {
+      display: block;
     }
 
     header {
@@ -105,8 +83,29 @@
       font-style: italic;
       font-size: 1.2rem;
       max-width: 600px;
-      margin: 0 auto;
+      margin: 0 auto 2rem auto;
       list-style-type: square;
+    }
+
+    .get-started-wrapper {
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .get-started-button {
+      padding: 15px 30px;
+      font-size: 20px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border: none;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+    }
+
+    .get-started-button:hover {
+      background-color: #0056b3;
     }
 
     .chess-image {
@@ -146,16 +145,12 @@
   </style>
 </head>
 <body>
+
   <!-- Intro animation -->
   <div id="intro"><span>Korustech</span></div>
 
-  <!-- Get Started screen -->
-  <div id="getStarted">
-    <button class="get-started-button" onclick="showInnerPage()">Get Started</button>
-  </div>
-
-  <!-- Main content -->
-  <div id="main">
+  <!-- Homepage content -->
+  <div id="homepage">
     <header>
       <h1>Welcome to Korus' Website for Chess Players</h1>
     </header>
@@ -166,22 +161,25 @@
         <li>How to build a strong opening repertoire for intermediate and advanced players.</li>
         <li>Friendly UI to learn chess.</li>
       </ul>
-    </main>
 
-    <div style="text-align:center; margin-top:100px;">
-      <h2>STAY TUNED FOR FUTURE UPDATES!</h2>
-      <img src="images/thumbnails66999.jpeg" alt="My Uploaded Image">
-    </div>
+      <div class="get-started-wrapper">
+        <button class="get-started-button" onclick="showInnerPage()">Get Started</button>
+      </div>
+
+      <div style="text-align:center; margin-top:100px;">
+        <h2>STAY TUNED FOR FUTURE UPDATES!</h2>
+        <img src="images/thumbnails66999.jpeg" alt="My Uploaded Image" class="chess-image">
+      </div>
+    </main>
   </div>
 
-  <!-- Inner Page with Back Button -->
+  <!-- Inner Page -->
   <div id="innerPage">
     <button id="backBtn" onclick="goBack()">← Back to Homepage</button>
     <h1>This is the Inner Page</h1>
     <p>Content will be added here in the future.</p>
   </div>
 
-  <!-- Script -->
   <script>
     window.addEventListener("load", () => {
       setTimeout(() => {
@@ -190,14 +188,13 @@
     });
 
     function showInnerPage() {
-      document.getElementById("getStarted").style.display = "none";
-      document.getElementById("main").style.display = "none";
+      document.getElementById("homepage").style.display = "none";
       document.getElementById("innerPage").style.display = "block";
     }
 
     function goBack() {
       document.getElementById("innerPage").style.display = "none";
-      document.getElementById("main").style.display = "block";
+      document.getElementById("homepage").style.display = "block";
     }
   </script>
 </body>
