@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Korustech Intro</title>
   <style>
-    /* Fullscreen overlay for intro */
+    /* Intro animation */
     #intro {
       position: fixed;
       top: 0;
@@ -51,21 +51,28 @@
       }
     }
 
-    #main {
+    body {
+      font-family: 'Georgia', serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    #main, #innerPage {
       display: none;
     }
 
-    body.loaded #main {
-      display: block;
+    body.loaded #getStarted {
+      display: flex;
     }
 
-    /* Centered Get Started Button */
-    .get-started-container {
-      display: flex;
-      justify-content: center;
+    #getStarted {
+      height: 100vh;
+      display: none;
       align-items: center;
-      height: 80vh;
-      text-align: center;
+      justify-content: center;
     }
 
     .get-started-button {
@@ -76,20 +83,11 @@
       text-decoration: none;
       border-radius: 8px;
       transition: background-color 0.3s ease;
+      cursor: pointer;
     }
 
     .get-started-button:hover {
       background-color: #0056b3;
-    }
-
-    /* Existing page styles */
-    body {
-      font-family: 'Georgia', serif;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-      background-color: #f8f9fa;
-      color: #333;
     }
 
     header {
@@ -111,12 +109,6 @@
       list-style-type: square;
     }
 
-    section.image-section {
-      margin-top: 100vh;
-      text-align: center;
-      padding: 4rem 2rem;
-    }
-
     .chess-image {
       width: 50%;
       max-width: 600px;
@@ -124,23 +116,46 @@
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
+
+    #innerPage {
+      text-align: center;
+      padding: 100px 20px;
+      position: relative;
+    }
+
+    /* Back Button Styling */
+    #backBtn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #343a40;
+      color: #fff;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    #backBtn:hover {
+      background-color: #495057;
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
   <!-- Intro animation -->
   <div id="intro"><span>Korustech</span></div>
 
+  <!-- Get Started screen -->
+  <div id="getStarted">
+    <button class="get-started-button" onclick="showInnerPage()">Get Started</button>
+  </div>
+
   <!-- Main content -->
   <div id="main">
-
-    <!-- Get Started Button Section -->
-    <div class="get-started-container">
-      <a href="#content" class="get-started-button">Get Started</a>
-    </div>
-
-    <!-- Hidden anchor for button scroll -->
-    <div id="content"></div>
-
     <header>
       <h1>Welcome to Korus' Website for Chess Players</h1>
     </header>
@@ -153,21 +168,37 @@
       </ul>
     </main>
 
-    <!-- Image Section -->
     <div style="text-align:center; margin-top:100px;">
       <h2>STAY TUNED FOR FUTURE UPDATES!</h2>
       <img src="images/thumbnails66999.jpeg" alt="My Uploaded Image">
     </div>
-
   </div>
 
+  <!-- Inner Page with Back Button -->
+  <div id="innerPage">
+    <button id="backBtn" onclick="goBack()">← Back to Homepage</button>
+    <h1>This is the Inner Page</h1>
+    <p>Content will be added here in the future.</p>
+  </div>
+
+  <!-- Script -->
   <script>
-    // After 6 seconds (intro animation + fade), show main content
     window.addEventListener("load", () => {
       setTimeout(() => {
         document.body.classList.add("loaded");
       }, 6000);
     });
+
+    function showInnerPage() {
+      document.getElementById("getStarted").style.display = "none";
+      document.getElementById("main").style.display = "none";
+      document.getElementById("innerPage").style.display = "block";
+    }
+
+    function goBack() {
+      document.getElementById("innerPage").style.display = "none";
+      document.getElementById("main").style.display = "block";
+    }
   </script>
 </body>
 </html>
