@@ -31,4 +31,39 @@
   </div>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My GitHub Page</title>
+  <style>
+    #myImage {
+      display: none;
+      width: 300px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome to My GitHub Page</h1>
+
+  <p>Scroll down to see my image!</p>
+
+  <div style="height: 1000px;"></div> <!-- Spacer to allow scrolling -->
+
+  <img id="myImage" src="my-photo.jpg" alt="My Personal Photo" />
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const triggerHeight = 500; // change as needed
+      if (window.scrollY > triggerHeight) {
+        document.getElementById('myImage').style.display = 'block';
+      }
+    });
+  </script>
+
+</body>
+</html>
+
 <img src="images/thumbnails66999.jpeg" alt="My photo" />
