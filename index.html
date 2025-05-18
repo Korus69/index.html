@@ -1,6 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Korustech Intro</title>
+  <style>
+    /* Fullscreen overlay for intro */
+    #intro {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: black;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      font-size: 3em;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      animation: fadeOut 3s ease-in-out 3s forwards;
+    }
+
+    /* Text animation (scale & glow) */
+    #intro span {
+      animation: zoomGlow 3s ease-in-out;
+    }
+
+    @keyframes zoomGlow {
+      0% {
+        transform: scale(0.8);
+        opacity: 0;
+        text-shadow: none;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 1;
+        text-shadow: 0 0 20px #0ff, 0 0 40px #0ff;
+      }
+      100% {
+        transform: scale(1);
+        text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+      }
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
+    /* Hide main content initially */
+    #main {
+      display: none;
+    }
+
+    /* Show main content after intro */
+    body.loaded #main {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <!-- Intro animation -->
+  <div id="intro"><span>Korustech</span></div>
+
+  <!-- Your existing content goes here -->
+  <div id="main">
+    <h1>Welcome to the main website</h1>
+    <p>This is your original content.</p>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Welcome to Korus' Website for Chess Players</title>
@@ -67,4 +140,16 @@
   <h2>STAY TUNED FOR FUTURE UPDATES!</h2>
 <img src="images/thumbnails66999.jpeg" alt="My Uploaded Image">
 </div>
+  
+  </div>
 
+  <script>
+    // After 6 seconds (animation + fade), show main content
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        document.body.classList.add("loaded");
+      }, 6000); // total animation time
+    });
+  </script>
+</body>
+</html>
