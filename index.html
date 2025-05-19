@@ -47,7 +47,7 @@
     body.loaded #main { display: block; }
 
     /* Hide all sections initially */
-    #main, #lessonPage, #lessonTwoPage {
+    #main, #lessonPage, #lessonTwoPage, #lessonThreePage {
       display: none;
     }
 
@@ -90,6 +90,21 @@
       background-color: #007bff;
       color: white;
       cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 0 5px #007bff;
+      font-weight: bold;
+    }
+
+    /* Futuristic glowing hover effect */
+    .button:hover {
+      background-color: #00ffff;
+      color: #000;
+      box-shadow:
+        0 0 8px #00ffff,
+        0 0 15px #00ffff,
+        0 0 25px #00ffff,
+        0 0 40px #00ffff;
+      transform: scale(1.05);
     }
 
     .top-left-button {
@@ -103,18 +118,83 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 0 5px #0ff;
+      font-weight: bold;
+      z-index: 10;
+    }
+
+    .top-left-button:hover {
+      background-color: #00ffff;
+      color: #000;
+      box-shadow:
+        0 0 8px #00ffff,
+        0 0 15px #00ffff,
+        0 0 25px #00ffff,
+        0 0 40px #00ffff;
+      transform: scale(1.05);
     }
 
     h2.lesson-title {
       font-size: 1.8rem;
-      color: #004085;
+      color: #00bcd4; /* Futuristic blue */
       margin-top: 2rem;
+      font-family: 'Georgia', serif;
+      text-shadow:
+        0 0 5px #00bcd4,
+        0 0 10px #00bcd4,
+        0 0 20px #00bcd4;
+    }
+
+    h1.lesson-main-title {
+      font-family: 'Georgia', serif;
+      font-size: 2.5rem;
+      color: #00acc1;
+      margin-bottom: 0.5rem;
+      text-shadow:
+        0 0 7px #00acc1,
+        0 0 15px #00acc1;
     }
 
     .bottom-center {
       text-align: center;
       margin: 3rem 0;
     }
+
+    /* Futuristic background for lesson pages */
+    #lessonPage, #lessonTwoPage, #lessonThreePage {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      padding-top: 5rem;
+      color: #e0f7fa;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    #lessonPage p, #lessonTwoPage p, #lessonThreePage p, 
+    #lessonPage ul, #lessonTwoPage ul, #lessonThreePage ul {
+      max-width: 800px;
+      margin: 1rem auto;
+      font-size: 1.1rem;
+      color: #cce7ff;
+      text-align: left;
+      font-family: 'Georgia', serif;
+    }
+
+    #lessonTwoPage ul {
+      list-style-type: disc;
+      padding-left: 2rem;
+    }
+
+    /* Center images but smaller width */
+    #lessonTwoPage img, #lessonPage img {
+      width: 40%;
+      max-width: 350px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #00ffff88;
+      display: block;
+      margin: 1rem auto 2rem;
+    }
+
   </style>
 </head>
 <body>
@@ -143,76 +223,144 @@
     </main>
   </div>
 
-  <!-- Lesson Page -->
-  <div id="lessonPage" style="background: linear-gradient(to bottom right, #e0f7fa, #ffffff); padding-top: 5rem;">
-  <button class="top-left-button" onclick="goHome()">← Back to Homepage</button>
+  <!-- Lesson 1 Page -->
+  <div id="lessonPage">
+    <button class="top-left-button" onclick="goHome()">← Back to Homepage</button>
 
-  <div style="text-align: center; margin-top: 1rem;">
-    <h1 style="font-family: 'Georgia', serif; font-size: 2.5rem; color: #005073; margin-bottom: 0.5rem;">Lesson 1</h1>
-    <h2 class="lesson-title">Chess Lesson for Beginner: Learning Piece Notations and Squares</h2>
+    <div style="text-align: center; margin-top: 1rem;">
+      <h1 class="lesson-main-title">Lesson 1</h1>
+      <h2 class="lesson-title">Chess Lesson for Beginner: Learning Piece Notations and Squares</h2>
+    </div>
+
+    <img src="images/chessboard.jpg" alt="Chess Board" class="chess-image">
+
+    <p>
+      Take a look at this chess board. This is where all the action happens, there are 64 squares, from the left to right notation as: a, b, c, d, e, f, g, h and from bottom to top, counting 1, 2, 3, 4, 5, 6, 7, 8. These notations will be very useful in next coming lessons because I am going to talk in chess notations and this helps to make learning process easier to the beginners. For example: The white king is on e1 and black king is on e8 square. Similarly, if I want to move a pawn on e2, to e4, this move would now be called as "e4". If I want to move my knight to f3, this move would be denoted as "Nf3".
+    </p>
+
+    <p>
+      Here are all the notations for every piece, remember that pawns do not have notation and whichever square pawn moves to, we are going to name that square only: Here's the list:
+    </p>
+    <ul>
+      <li>King - notation - K</li>
+      <li>Queen - notation - Q</li>
+      <li>Bishop - notation - B</li>
+      <li>Knight - notation - N</li>
+      <li>Rook - notation - R</li>
+    </ul>
+
+    <p>
+      Now for example, imagine a pawn is on e4 and another pawn is on d5, if someone captured this pawn, the notation would now be "exd5", where "x" or cross symbolizes something captured something, if Queen captured rook, "Qxr", etc.. so on. Even though the move has not happened in the board, you should be able to imagine it, this helps in your calculation of the move sequence. But more on that later at advanced level lessons.
+    </p>
+
+    <p>
+      Now that you have learned about notations of squares and pieces, let's move on to the next lesson, where I will show you how to begin the game with a beginner-friendly opening.
+    </p>
+
+    <div class="bottom-center">
+      <button class="button" onclick="goToLessonTwo()">Next Lesson</button>
+    </div>
   </div>
 
-  <img src="images/chessboard.jpg" alt="Chess Board" class="chess-image">
-
-  <p style="max-width: 800px; margin: 1rem auto; font-size: 1.1rem; color: #212529;">
-    Take a look at this chess board. This is where all the action happens, there are 64 squares, from the left to right notation as: a, b, c, d, e, f, g, h and from bottom to top, counting 1, 2, 3, 4, 5, 6, 7, 8. These notations will be very useful in next coming lessons because I am going to talk in chess notations and this helps to make learning process easier to the beginners. For example: The white king is on e1 and black king is on e8 square. Similarly, if I want to move a pawn on e2, to e4, this move would now be called as "e4". If I want to move my knight to f3, this move would be denoted as "Nf3".
-  </p>
-
-  <p style="max-width: 800px; margin: 1rem auto; font-size: 1.1rem; color: #212529;">
-    Here are all the notations for every piece, remember that pawns do not have notation and whichever square pawn moves to, we are going to name that square only: Here's the list:
-  </p>
-  <ul style="max-width: 800px; margin: 0 auto 2rem; font-size: 1.1rem; color: #212529;">
-    <li>King - notation - K</li>
-    <li>Queen - notation - Q</li>
-    <li>Bishop - notation - B</li>
-    <li>Knight - notation - N</li>
-    <li>Rook - notation - R</li>
-  </ul>
-
-  <p style="max-width: 800px; margin: 1rem auto; font-size: 1.1rem; color: #212529;">
-    Now for example, imagine a pawn is on e4 and another pawn is on d5, if someone captured this pawn, the notation would now be "exd5", where "x" or cross symbolizes something captured something, if Queen captured rook, "Qxr", etc.. so on. Even though the move has not happened in the board, you should be able to imagine it, this helps in your calculation of the move sequence. But more on that later at advanced level lessons.
-  </p>
-
-  <p style="max-width: 800px; margin: 1rem auto; font-size: 1.1rem; color: #212529;">
-    Now that you have learned about notations of squares and pieces, let's move on to the next lesson, where I will show you how to begin the game with a beginner-friendly opening.
-  </p>
-
-  <div class="bottom-center">
-    <button class="button" onclick="goToLessonTwo()">Next Lesson</button>
-  </div>
-</div>
-
-  <!-- Second Inner Page (Lesson 2 Placeholder) -->
+  <!-- Lesson 2 Page -->
   <div id="lessonTwoPage">
     <button class="top-left-button" onclick="goToLesson()">← Previous Lesson</button>
-    <main style="text-align:center; padding: 4rem;">
-      <h2 style="font-size: 2rem; color: #6c757d;">Lesson 2 Coming Soon!</h2>
-      <p style="font-size: 1.2rem; color: #555;">Stay tuned for updates on beginner-friendly chess openings.</p>
+
+    <main>
+      <div style="text-align: center; margin-top: 1rem;">
+        <h1 class="lesson-main-title">Lesson 2</h1>
+        <h2 class="lesson-title">Opening Concept and How to Learn Any Opening</h2>
+      </div>
+
+      <img src="images/castling-example.jpg" alt="Castling Example" />
+
+      <p>
+        I am sure you have mastered Lesson 1, and here you have arrived at Lesson 2. Now that you have learnt all the notations of pieces and squares, I will tell you about new notation, which is castling. Castling is the move of King and the adjacent Rook, as soon as the knight and bishop between King and the Rook are out or developed, then King and Rook can perform shuffling and can castle. The third image on above figure shows how King and Rook are positioned for both black and white after castling. So, the notation of castling is O-O, and if you want to castle queenside, for which the Knight, Bishop and the Queen needs to get out of the way, the King and Rook could castle longer side, which would be notation wise O-O-O.
+      </p>
+
+      <p>
+        Here in the above picture, one opening has been played with the starting move of 1.D4 D5, where d pawn of both black and white moved. And on the second Move, the white has moved its bishop to square of f4, which can be denoted as "Bf4", so then the full opening was played out as :
+      </p>
+
+      <pre style="max-width: 400px; margin: 1rem auto; font-size: 1.1rem; color: #cce7ff; background-color: #102028; padding: 1rem; border-radius: 8px;">
+1. D4 D5
+2. Bf4 e6
+3. e3 Nf6
+4. Nf3 c6
+5. Bd3 Be7
+6. O-O , O-O
+      </pre>
+
+      <img src="images/london-system.jpg" alt="London System Board Position" />
+
+      <p>
+        Now look at this position on this board, which is played out by six moves of both black and white mentioned above. The bishop that is highlighted on square d3 is called as the London Bishop. And the move order this opening followed where 1.d4 d5, 2. Bf4 e6, this opening is called as Hyper-Accelerated London System.
+      </p>
+
+      <p>
+        Now you have watched this opening play out, you need to try and play this on chess.com and lichess.org websites, so here are important things you noted which are the purpose of any opening theory :
+      </p>
+      <ul>
+        <li>Opening helps to control and grasp the center, the center being e4, e5, d4, d5 squares.</li>
+        <li>Opening's purpose is to develop ( take out) pieces like knights, bishops and queens and finally castle the king to safety.</li>
+        <li>Opening's purpose is to get a comfortable position before starting to plan for the middlegame phase.</li>
+      </ul>
+
+      <p>
+        Here, the bishop highlighted in d3 looks at long diagonal, and later the Queen can go to c2 square to reinforce the bishop.
+      </p>
+
+      <div class="bottom-center">
+        <button class="button" onclick="goToLessonThree()">Next Lesson</button>
+      </div>
+    </main>
+  </div>
+
+  <!-- Placeholder Lesson 3 Page -->
+  <div id="lessonThreePage">
+    <button class="top-left-button" onclick="goToLessonTwo()">← Previous Lesson</button>
+    <main style="text-align:center; margin-top: 5rem;">
+      <h1 class="lesson-main-title">Lesson 3 (Coming Soon)</h1>
+      <p>Content for Lesson 3 will be added soon. Stay tuned!</p>
+      <div class="bottom-center">
+        <button class="button" onclick="alert('Lesson 3 content will be available soon!')">Next Lesson</button>
+      </div>
     </main>
   </div>
 
   <script>
-    window.addEventListener("load", () => {
+    // After intro animation ends, show homepage
+    window.onload = () => {
       setTimeout(() => {
-        document.body.classList.add("loaded");
-        document.getElementById("main").style.display = "block";
-      }, 6000);
-    });
+        document.getElementById('intro').style.display = 'none';
+        document.body.classList.add('loaded');
+        document.getElementById('main').style.display = 'block';
+      }, 5000);
+    };
 
     function goToLesson() {
-      document.getElementById("main").style.display = "none";
-      document.getElementById("lessonPage").style.display = "block";
-      document.getElementById("lessonTwoPage").style.display = "none";
+      document.getElementById('main').style.display = 'none';
+      document.getElementById('lessonPage').style.display = 'block';
     }
 
     function goHome() {
-      document.getElementById("main").style.display = "block";
-      document.getElementById("lessonPage").style.display = "none";
+      document.getElementById('lessonPage').style.display = 'none';
+      document.getElementById('main').style.display = 'block';
     }
 
     function goToLessonTwo() {
-      document.getElementById("lessonPage").style.display = "none";
-      document.getElementById("lessonTwoPage").style.display = "block";
+      document.getElementById('lessonPage').style.display = 'none';
+      document.getElementById('lessonTwoPage').style.display = 'block';
+    }
+
+    function goToLessonThree() {
+      document.getElementById('lessonTwoPage').style.display = 'none';
+      document.getElementById('lessonThreePage').style.display = 'block';
+    }
+
+    function goToLessonTwo() {
+      document.getElementById('lessonThreePage').style.display = 'none';
+      document.getElementById('lessonTwoPage').style.display = 'block';
     }
   </script>
 </body>
