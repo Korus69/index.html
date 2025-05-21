@@ -47,7 +47,8 @@
     body.loaded #main,
     body.loaded #lessonPage,
     body.loaded #lessonTwoPage,
-    body.loaded #lessonThreePage {
+    body.loaded #lessonThreePage,
+    body.loaded #lessonFourPage {
       display: none;
     }
 
@@ -120,6 +121,7 @@
       padding: 2rem;
       min-height: 100vh;
       box-sizing: border-box;
+      position: relative;
     }
 
     .content {
@@ -203,16 +205,9 @@
 
       <img src="images/chessopeningone1final.jpg" alt="London Position" class="chess-image">
 
-      <p>Now look at this position on this board, which is played out by six moves of both black and white mentioned above. The bishop that is highlighted on square d3 is called as the London Bishop. And the move order this opening followed where 1.d4 d5, 2. Bf4 e6, this opening is called as Hyper-Accelerated London System.</p>
+      <p>Now look at this position on this board, which is played out by six moves of both black and white mentioned above. This position is called "London System", and it is a safe and easy system to play for beginners to get comfortable in chess.</p>
 
-      <p>Now you have watched this opening play out, you need to try and play this on chess.com and lichess.org websites, so here are important things you noted which are the purpose of any opening theory :</p>
-      <ul>
-        <li>Opening helps to control and grasp the center, the center being e4, e5, d4, d5 squares.</li>
-        <li>Opening's purpose is to develop (take out) pieces like knights, bishops and queens and finally castle the king to safety.</li>
-        <li>Opening's purpose is to get a comfortable position before starting to plan for the middlegame phase.</li>
-      </ul>
-
-      <p>Here, the bishop highlighted in d3 looks at long diagonal, and later the Queen can go to c2 square to reinforce the bishop</p>
+      <p>So if you want to learn an opening, pick a line from the books or trusted websites and play that line repeatedly against an engine or a friend. Make notes and try to understand the ideas behind moves. This way you can learn many openings easily. In the next lesson, I will teach you about middle game concepts.</p>
 
       <div class="bottom-center">
         <button class="button" onclick="showSection('lessonThreePage')">Next Lesson</button>
@@ -220,28 +215,75 @@
     </div>
   </div>
 
-  <!-- Lesson 3 Placeholder -->
+  <!-- Lesson 3 -->
   <div id="lessonThreePage" class="section">
     <button class="top-left-button" onclick="showSection('lessonTwoPage')">← Previous Lesson</button>
     <div class="content">
       <h1>Lesson 3</h1>
-      <h2 class="lesson-title">Lesson 3 Coming Soon!</h2>
-      <p>Stay tuned for updates on more advanced chess lessons and strategies.</p>
+      <h2 class="lesson-title">Middle Game Plan and Learning the Imbalances</h2>
+      
+      <p>Welcome to middlegame phase of the game. I am sure you have learnt what an opening means by now. Opening's motive was to get a player started, develop their pieces and finally castle their King to safety. But now that this is done, what next ? Exactly, this is where we will learn about middlegame phase of the game. Here are the main points of middlegame phase of the game:</p>
+      <ul>
+        <li>Middlegame is where you plan your next moves to gain advantage</li>
+        <li>Advantage of any player can be because of : Space, Tactics, Properly placed pieces ( Active and Passive pieces), Pawn structure, Positional weaknesses, weak square, weak pawns, etc.</li>
+        <li>Middlegame phase is when you are going to attack your opponent's weak pawns, and place your piece in the weak squares.</li>
+      </ul>
+      
+      <p>Take a look at following position on the board</p>
+      <img src="images/middlegame_position1.jpg" alt="Middlegame position example" class="chess-image" style="max-width: 300px;"/>
+
+      <p>Now take a look at this position, this may look normal, and yes here the opening just ended and now this game is at middlegame phase. But black has gone wrong and white is completely winning. Can you spot why? This is because Black has created huge weakness on his king side, look at this pawn on h6. It is capturable. But aren't you giving up a bishop for it? What happens after he takes, I guess we will take with Queen, and the light square bishop is eyeing on the h7 square, and this game is all over after you sacrifice your dark square bishop, takes and queen takes. This example is a tactical weakness of black and white has managed to punish black for it.</p>
+
+      <p>Take a look at following images</p>
+      <img src="images/middlegame_position2.jpg" alt="Middlegame tactical example 1" class="chess-image" style="max-width: 300px; margin-bottom: 2rem;"/>
+      <img src="images/middlegame_position3.jpg" alt="Middlegame tactical example 2" class="chess-image" style="max-width: 300px;"/>
+
+      <p>Now take a look at different image below, this is a position played by Grandmaster Vladimir Kramnik in 1997, and here white to move and avoid any exchanges</p>
+      <img src="images/kramnik_1997_position.jpg" alt="Kramnik 1997 position" class="chess-image" style="max-width: 350px;"/>
+
+      <p>In this position above, black is lost, because white has managed to get a lot of space for himself. The game started with these following moves : 1.d4 Nf6 , 2.c4 c5, 
+      3. d5 e6, 4. Nc3 exd5, 5. cxd5 d6, 6. e4 g6, 7. f4 Bg7, 8. Bb5 +Nfd7 , 9. a4 O-O, 10. Nf3 Nb4 , 
+      11. O-O Nb4, 12. Re1 a6,  13 ..... ....... ?</p>
+
+      <p>White enjoys much more central space. Note that black's light square bishop is actually in the way of other pieces. At the moment, white's light squared bishop is under attack by pawn on a6 and has to move.  13. Bc4 has been played from time to time in this game, but 13. Bf1 is correct. Why? Because 1. Bc4 gives black time to free his bishop and trade it off 13. ....Nb6 , 14. Be2 Bg4. When black's force will have more room to move about. </p>
+
+      <p>But on the other hand, if 13. Bf1 is played, then it avoids this Nf6 move of black, when black is forced to continue suffering the lack of space for his pieces. This idea that the side with more territory or space should avoid unnecessary exchanges / trade off of pieces and might lead one to believe that space won't be much use in endgame since many exchanges would have been made to reach that stage. However, this simple is not the case. And the side with more space almost always has the advantage.</p>
+
+      <p>You have learnt about how a side with piece activity, space, tactical advantage, better pawn structures , always have the advantage, to achieve it, is the motive of middlegame phase of the game. In the next lesson, we will talk about middle game and endgame imbalances.</p>
+
+      <div class="bottom-center">
+        <button class="button" onclick="showSection('lessonFourPage')">Next Lesson</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lesson 4 Placeholder -->
+  <div id="lessonFourPage" class="section">
+    <button class="top-left-button" onclick="showSection('lessonThreePage')">← Previous Lesson</button>
+    <div class="content">
+      <h1>Lesson 4</h1>
+      <h2 class="lesson-title">Coming Soon</h2>
+      <p>This lesson content will be added soon in the future. Stay tuned!</p>
     </div>
   </div>
 
   <script>
-    window.addEventListener("load", () => {
+    document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => {
-        document.body.classList.add("loaded");
-      }, 6000);
+        document.getElementById('intro').style.display = 'none';
+        document.body.classList.add('loaded');
+      }, 4000);
     });
 
-    function showSection(id) {
-      const sections = document.querySelectorAll(".section");
-      sections.forEach(section => section.classList.remove("visible"));
-      document.getElementById(id).classList.add("visible");
+    function showSection(sectionId) {
+      const sections = ['main', 'lessonPage', 'lessonTwoPage', 'lessonThreePage', 'lessonFourPage'];
+      sections.forEach(id => {
+        document.getElementById(id).classList.remove('visible');
+      });
+      document.getElementById(sectionId).classList.add('visible');
     }
   </script>
+
 </body>
 </html>
+
