@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Korustech Chess Lessons</title>
   <style>
     body {
@@ -45,12 +45,13 @@
       to { opacity: 0; visibility: hidden; }
     }
 
-    body.loaded #main,
-    body.loaded #lessonPage,
-    body.loaded #lessonTwoPage,
-    body.loaded #lessonThreePage,
-    body.loaded #lessonFourPage {
-      display: none;
+    /* Hide all main content sections by default */
+    .section {
+      display: none !important;
+      padding: 2rem;
+      min-height: 100vh;
+      box-sizing: border-box;
+      position: relative;
     }
 
     .visible {
@@ -117,23 +118,16 @@
       margin: 3rem 0;
     }
 
-    .section {
-  display: none !important; /* Hide all main content by default */
-  padding: 2rem;
-  min-height: 100vh;
-  box-sizing: border-box;
-  position: relative;
-}
-
     .content {
       max-width: 800px;
       margin: 0 auto;
       font-size: 1.1rem;
       line-height: 1.6;
     }
-   /* Login/Register Form Styling */
+
+    /* Login/Register Form Styling */
     #authSection {
-      display: none; /* visible initially, then hidden on intro fade */
+      display: none; /* hidden by default, shown after intro */
       max-width: 400px;
       margin: 5rem auto;
       background: #102133;
@@ -184,6 +178,13 @@
       text-decoration: underline;
     }
 
+    #authMessage {
+      color: #f66;
+      margin-top: 1rem;
+      min-height: 1.2rem;
+      font-weight: bold;
+    }
+
     /* Logout Button top right */
     #logoutBtn {
       position: fixed;
@@ -213,21 +214,20 @@
   <div id="intro"><span>Korustech</span></div>
 
   <!-- Authentication Section -->
-  <div id="authSection" class="visible">
+  <div id="authSection">
     <h2 id="authTitle">Login</h2>
     <input type="email" id="email" placeholder="Email" autocomplete="username" />
     <input type="password" id="password" placeholder="Password" autocomplete="current-password" />
     <button id="authBtn">Login</button>
     <div id="authToggle">Don't have an account? Register here</div>
-    <p id="authMessage" style="color: #f66; margin-top:1rem;"></p>
+    <p id="authMessage"></p>
   </div>
 
   <!-- Logout Button -->
   <button id="logoutBtn">Logout</button>
 
-
   <!-- Homepage -->
-  <div id="main" class="section visible">
+  <div id="main" class="section">
     <header>
       <h1>Welcome to Korus' Website for Chess Players</h1>
     </header>
@@ -242,7 +242,7 @@
       </div>
       <div style="margin-top: 100px;">
         <h2>STAY TUNED FOR FUTURE UPDATES!</h2>
-        <img src="images/thumbnails66999.jpeg" alt="My Uploaded Image" class="chess-image">
+        <img src="images/thumbnails66999.jpeg" alt="My Uploaded Image" class="chess-image" />
       </div>
     </main>
   </div>
@@ -369,107 +369,129 @@
       messagingSenderId: "221469464979",
       appId: "1:221469464979:web:eec6dec49aa313ac563066"
     };
+   
+ // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
 
     // Elements
     const intro = document.getElementById('intro');
     const authSection = document.getElementById('authSection');
+    const logoutBtn = document.getElementById('logoutBtn');
+
     const authTitle = document.getElementById('authTitle');
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
     const authBtn = document.getElementById('authBtn');
     const authToggle = document.getElementById('authToggle');
     const authMessage = document.getElementById('authMessage');
-    const logoutBtn = document.getElementById('logoutBtn');
 
     // Sections
-    const sections = ['main', 'lessonPage', 'lessonTwoPage', 'lessonThreePage', 'lessonFourPage'];
+    const sections = ['main', 'lessonPage', 'lessonPage2', 'lessonPage3'];
 
-    // Show section helper
-   function showSection(sectionId) {
-  if (!auth.currentUser) {
-    alert('Please login to access lessons.');
-    return;
-  }
-  sections.forEach(id => {
-    const section = document.getElementById(id);
-    section.style.display = (id === sectionId) ? 'block' : 'none';
-  });
-}
+    // State: true = login mode, false = register mode
+    let isLoginMode = true;
 
-    // Toggle between Login/Register modes
-    let isLogin = true;
+    // Hide all content sections
+    function hideAllSections() {
+      sections.forEach(id => {
+        document.getElementById(id).classList.remove('visible');
+      });
+    }
+
+    // Show one content section by id
+    function showSection(id) {
+      hideAllSections();
+      document.getElementById(id).classList.add('visible');
+      window.scrollTo(0, 0);
+    }
+
+    // After intro animation ends, show auth section
+    function showAuth() {
+      intro.style.display = 'none';
+      authSection.classList.add('visible');
+    }
+
+    // Toggle login/register mode
     authToggle.addEventListener('click', () => {
-      isLogin = !isLogin;
-      authTitle.textContent = isLogin ? 'Login' : 'Register';
-      authBtn.textContent = isLogin ? 'Login' : 'Register';
-      authToggle.textContent = isLogin
-        ? "Don't have an account? Register here"
-        : "Already have an account? Login here";
-      authMessage.textContent = '';
+      isLoginMode = !isLoginMode;
+      if (isLoginMode) {
+        authTitle.textContent = 'Login';
+        authBtn.textContent = 'Login';
+        authToggle.textContent = "Don't have an account? Register here";
+        emailInput.value = '';
+        passwordInput.value = '';
+        authMessage.textContent = '';
+      } else {
+        authTitle.textContent = 'Register';
+        authBtn.textContent = 'Register';
+        authToggle.textContent = "Already have an account? Login here";
+        emailInput.value = '';
+        passwordInput.value = '';
+        authMessage.textContent = '';
+      }
     });
 
-    // Auth Button click handler
+    // Handle login/register button click
     authBtn.addEventListener('click', () => {
       const email = emailInput.value.trim();
       const password = passwordInput.value.trim();
-      authMessage.textContent = '';
+
       if (!email || !password) {
-        authMessage.textContent = 'Email and password are required.';
+        authMessage.textContent = 'Please enter email and password.';
         return;
       }
-      if (isLogin) {
+
+      authMessage.textContent = 'Processing...';
+
+      if (isLoginMode) {
         // Login
         auth.signInWithEmailAndPassword(email, password)
+          .then(() => {
+            authMessage.textContent = '';
+          })
           .catch(err => {
             authMessage.textContent = err.message;
           });
       } else {
         // Register
         auth.createUserWithEmailAndPassword(email, password)
+          .then(() => {
+            authMessage.textContent = 'Registration successful! Logging in...';
+          })
           .catch(err => {
             authMessage.textContent = err.message;
           });
       }
     });
 
-    // Logout button
+    // Handle logout
     logoutBtn.addEventListener('click', () => {
-  auth.signOut().then(() => {
-    authSection.classList.add('visible');
-  });
-});
-
-    // On auth state change
- auth.onAuthStateChanged(user => {
-  if (user) {
-    intro.style.display = 'none';
-    authSection.classList.remove('visible');
-    logoutBtn.style.display = 'block';
-    showSection('main'); // 👈 Only show homepage after login
-  } else {
-    logoutBtn.style.display = 'none';
-    authSection.classList.add('visible');
-
-    // 🔒 Hide all lesson/homepage sections after logout
-    sections.forEach(id => {
-      document.getElementById(id).style.display = 'none';
+      auth.signOut();
     });
-  }
-});
 
-    // On intro animation end, fade out intro and show authSection if not logged in
-  window.addEventListener('load', () => {
-  setTimeout(() => {
-    intro.style.display = 'none';
-    if (!auth.currentUser) {
-      authSection.classList.add('visible');
-    }
-  }, 4000);
-});
+    // Listen for auth state changes
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        // User is logged in
+        authSection.classList.remove('visible');
+        logoutBtn.style.display = 'block';
+        showSection('main');
+      } else {
+        // No user logged in
+        logoutBtn.style.display = 'none';
+        hideAllSections();
+        authSection.classList.add('visible');
+      }
+    });
 
+    // Start intro timer: show intro for 3 seconds, then show auth
+    setTimeout(() => {
+      showAuth();
+    }, 3000);
   </script>
+</body>
+</html>
 
 </body>
 </html>
