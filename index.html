@@ -387,8 +387,7 @@
     const sections = ['main', 'lessonPage', 'lessonTwoPage', 'lessonThreePage', 'lessonFourPage'];
 
     // Show section helper
-    function showSection(sectionId) {
-  // Only allow navigation if logged in
+   function showSection(sectionId) {
   if (!auth.currentUser) {
     alert('Please login to access lessons.');
     return;
@@ -437,35 +436,39 @@
 
     // Logout button
     logoutBtn.addEventListener('click', () => {
-      auth.signOut();
-    });
+  auth.signOut().then(() => {
+    authSection.classList.add('visible');
+  });
+});
 
     // On auth state change
  auth.onAuthStateChanged(user => {
   if (user) {
-    authSection.classList.remove('visible');
     intro.style.display = 'none';
+    authSection.classList.remove('visible');
     logoutBtn.style.display = 'block';
-    showSection('main'); // show homepage only
+    showSection('main'); // 👈 Only show homepage after login
   } else {
     logoutBtn.style.display = 'none';
+    authSection.classList.add('visible');
+
+    // 🔒 Hide all lesson/homepage sections after logout
     sections.forEach(id => {
       document.getElementById(id).style.display = 'none';
     });
-    authSection.classList.add('visible');
   }
 });
 
     // On intro animation end, fade out intro and show authSection if not logged in
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        intro.style.display = 'none';
-        // If not logged in, show authSection
-        if (!auth.currentUser) {
-          authSection.classList.add('visible');
-        }
-      }, 4000);
-    });
+  window.addEventListener('load', () => {
+  setTimeout(() => {
+    intro.style.display = 'none';
+    if (!auth.currentUser) {
+      authSection.classList.add('visible');
+    }
+  }, 4000);
+});
+
   </script>
 
 </body>
