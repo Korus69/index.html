@@ -118,12 +118,12 @@
     }
 
     .section {
-      display: none;
-      padding: 2rem;
-      min-height: 100vh;
-      box-sizing: border-box;
-      position: relative;
-    }
+  display: none !important; /* Hide all main content by default */
+  padding: 2rem;
+  min-height: 100vh;
+  box-sizing: border-box;
+  position: relative;
+}
 
     .content {
       max-width: 800px;
@@ -388,15 +388,16 @@
 
     // Show section helper
     function showSection(sectionId) {
-      // Only allow navigation if logged in
-      if (!auth.currentUser) {
-        alert('Please login to access lessons.');
-        return;
-      }
-      sections.forEach(id => {
-        document.getElementById(id).style.display = (id === sectionId) ? 'block' : 'none';
-      });
-    }
+  // Only allow navigation if logged in
+  if (!auth.currentUser) {
+    alert('Please login to access lessons.');
+    return;
+  }
+  sections.forEach(id => {
+    const section = document.getElementById(id);
+    section.style.display = (id === sectionId) ? 'block' : 'none';
+  });
+}
 
     // Toggle between Login/Register modes
     let isLogin = true;
@@ -440,24 +441,20 @@
     });
 
     // On auth state change
-    auth.onAuthStateChanged(user => {
-      if (user) {
-        // Logged in
-        authSection.classList.remove('visible');
-        intro.style.display = 'none';
-        logoutBtn.style.display = 'block';
-        // Show homepage initially
-        showSection('main');
-      } else {
-        // Logged out
-        logoutBtn.style.display = 'none';
-        // Hide all lessons and homepage
-        sections.forEach(id => {
-          document.getElementById(id).style.display = 'none';
-        });
-        authSection.classList.add('visible');
-      }
+ auth.onAuthStateChanged(user => {
+  if (user) {
+    authSection.classList.remove('visible');
+    intro.style.display = 'none';
+    logoutBtn.style.display = 'block';
+    showSection('main'); // show homepage only
+  } else {
+    logoutBtn.style.display = 'none';
+    sections.forEach(id => {
+      document.getElementById(id).style.display = 'none';
     });
+    authSection.classList.add('visible');
+  }
+});
 
     // On intro animation end, fade out intro and show authSection if not logged in
     window.addEventListener('load', () => {
