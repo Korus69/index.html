@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Korustech Chess Lessons</title>
   <style>
     body {
@@ -11,7 +11,6 @@
       padding: 0;
       background: linear-gradient(to bottom right, #0d1b2a, #1b263b);
       color: #ccc;
-      position: relative;
     }
 
     /* Intro Screen */
@@ -45,13 +44,12 @@
       to { opacity: 0; visibility: hidden; }
     }
 
-    /* Hide all main content sections by default */
-    .section {
-      display: none !important;
-      padding: 2rem;
-      min-height: 100vh;
-      box-sizing: border-box;
-      position: relative;
+    body.loaded #main,
+    body.loaded #lessonPage,
+    body.loaded #lessonTwoPage,
+    body.loaded #lessonThreePage,
+    body.loaded #lessonFourPage {
+      display: none;
     }
 
     .visible {
@@ -118,93 +116,19 @@
       margin: 3rem 0;
     }
 
+    .section {
+      display: none;
+      padding: 2rem;
+      min-height: 100vh;
+      box-sizing: border-box;
+      position: relative;
+    }
+
     .content {
       max-width: 800px;
       margin: 0 auto;
       font-size: 1.1rem;
       line-height: 1.6;
-    }
-
-    /* Login/Register Form Styling */
-    #authSection {
-      display: none; /* hidden by default, shown after intro */
-      max-width: 400px;
-      margin: 5rem auto;
-      background: #102133;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 0 20px #00bfff;
-      color: #ccc;
-      text-align: center;
-    }
-
-    #authSection.visible {
-      display: block !important;
-    }
-
-    #authSection h2 {
-      color: #00bfff;
-      margin-bottom: 1rem;
-    }
-
-    #authSection input {
-      width: 90%;
-      padding: 0.5rem;
-      margin: 0.5rem 0 1rem 0;
-      border-radius: 5px;
-      border: none;
-      font-size: 1rem;
-    }
-
-    #authSection button {
-      width: 95%;
-      margin: 0.5rem 0;
-      background-color: #00bfff;
-      color: #000;
-      font-weight: bold;
-      cursor: pointer;
-      transition: box-shadow 0.3s ease;
-    }
-
-    #authSection button:hover {
-      box-shadow: 0 0 15px #00bfff, 0 0 30px #00bfff;
-    }
-
-    #authToggle {
-      margin-top: 1rem;
-      font-style: italic;
-      cursor: pointer;
-      color: #00bfff;
-      text-decoration: underline;
-    }
-
-    #authMessage {
-      color: #f66;
-      margin-top: 1rem;
-      min-height: 1.2rem;
-      font-weight: bold;
-    }
-
-    /* Logout Button top right */
-    #logoutBtn {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      padding: 0.6rem 1.2rem;
-      font-size: 1rem;
-      border: none;
-      border-radius: 5px;
-      background-color: #00bfff;
-      color: #000;
-      cursor: pointer;
-      box-shadow: none;
-      transition: box-shadow 0.3s ease;
-      display: none;
-      z-index: 10000;
-    }
-
-    #logoutBtn:hover {
-      box-shadow: 0 0 15px #00bfff, 0 0 30px #00bfff;
     }
   </style>
 </head>
@@ -213,21 +137,8 @@
   <!-- Intro animation -->
   <div id="intro"><span>Korustech</span></div>
 
-  <!-- Authentication Section -->
-  <div id="authSection">
-    <h2 id="authTitle">Login</h2>
-    <input type="email" id="email" placeholder="Email" autocomplete="username" />
-    <input type="password" id="password" placeholder="Password" autocomplete="current-password" />
-    <button id="authBtn">Login</button>
-    <div id="authToggle">Don't have an account? Register here</div>
-    <p id="authMessage"></p>
-  </div>
-
-  <!-- Logout Button -->
-  <button id="logoutBtn">Logout</button>
-
   <!-- Homepage -->
-  <div id="main" class="section">
+  <div id="main" class="section visible">
     <header>
       <h1>Welcome to Korus' Website for Chess Players</h1>
     </header>
@@ -242,7 +153,7 @@
       </div>
       <div style="margin-top: 100px;">
         <h2>STAY TUNED FOR FUTURE UPDATES!</h2>
-        <img src="images/thumbnails66999.jpeg" alt="My Uploaded Image" class="chess-image" />
+        <img src="images/thumbnails66999.jpeg" alt="My Uploaded Image" class="chess-image">
       </div>
     </main>
   </div>
@@ -294,9 +205,9 @@
 
       <img src="images/chessopeningone1final.jpg" alt="London Position" class="chess-image">
 
-      <p>Now look at this position on this board, which is played out by six moves of both black and white mentioned above. This position is called "London System" in general and 1.d4 d5, 2Bf4 ... is called as Hyper-Accelerated London system, because Bishop came out early, and it is a safe and easy system to play for beginners to get a comfortable position in the opening phase of a chess game. The thematic idea of London system is the bishop on d3 square, which stays in long diagonal and later Queen can go to c2 square and reinforce the bishop. </p>
+      <p>Now look at this position on this board, which is played out by six moves of both black and white mentioned above. This position is called "London System", and it is a safe and easy system to play for beginners to get comfortable in chess.</p>
 
-      <p>So if you want to learn any opening, play that line repeatedly against an engine or a friend. Make notes and try to understand the ideas behind moves. This way you can learn many openings easily. In summary, Opening phase is where you developed your pieces, and castled and got a position of your liking. In the next lesson, I will teach you about middle game concepts.</p>
+      <p>So if you want to learn an opening, pick a line from the books or trusted websites and play that line repeatedly against an engine or a friend. Make notes and try to understand the ideas behind moves. This way you can learn many openings easily. In the next lesson, I will teach you about middle game concepts.</p>
 
       <div class="bottom-center">
         <button class="button" onclick="showSection('lessonThreePage')">Next Lesson</button>
@@ -315,28 +226,28 @@
       <ul>
         <li>Middlegame is where you plan your next moves to gain advantage</li>
         <li>Advantage of any player can be because of : Space, Tactics, Properly placed pieces ( Active and Passive pieces), Pawn structure, Positional weaknesses, weak square, weak pawns, etc.</li>
-        <li>Middlegame phase is when you are going to attack your opponent's weak pawns, and place your piece in their weak squares. Note that their weak square, is the square which is not defended by their pawns, or in other words, "the hole" in their position.</li>
+        <li>Middlegame phase is when you are going to attack your opponent's weak pawns, and place your piece in the weak squares.</li>
       </ul>
       
       <p>Take a look at following position on the board</p>
-      <img src="images/lesson3pic1.jpg" alt="Middlegame position example" class="chess-image" style="max-width: 300px;"/>
+      <img src="images/middlegame_position1.jpg" alt="Middlegame position example" class="chess-image" style="max-width: 300px;"/>
 
       <p>Now take a look at this position, this may look normal, and yes here the opening just ended and now this game is at middlegame phase. But black has gone wrong and white is completely winning. Can you spot why? This is because Black has created huge weakness on his king side, look at this pawn on h6. It is capturable. But aren't you giving up a bishop for it? What happens after he takes, I guess we will take with Queen, and the light square bishop is eyeing on the h7 square, and this game is all over after you sacrifice your dark square bishop, takes and queen takes. This example is a tactical weakness of black and white has managed to punish black for it.</p>
 
       <p>Take a look at following images</p>
-      <img src="images/lesson3pic2.jpg" alt="Middlegame tactical example 1" class="chess-image" style="max-width: 300px; margin-bottom: 2rem;"/>
-      <img src="images/lesson3pic3.jpg" alt="Middlegame tactical example 2" class="chess-image" style="max-width: 300px;"/>
+      <img src="images/middlegame_position2.jpg" alt="Middlegame tactical example 1" class="chess-image" style="max-width: 300px; margin-bottom: 2rem;"/>
+      <img src="images/middlegame_position3.jpg" alt="Middlegame tactical example 2" class="chess-image" style="max-width: 300px;"/>
 
-      <p>Now take a look at different image below, this is a position played by Grandmaster Vladimir Kramnik in 1997, he is playing with white pieces, and here white to move and avoid any exchanges. The idea is, "Why to exchange pieces when your pieces are superior than your opponents ?" And also when you have a lot of space. </p>
-      <img src="images/lesson3pic4.jpg" alt="Kramnik 1997 position" class="chess-image" style="max-width: 350px;"/>
+      <p>Now take a look at different image below, this is a position played by Grandmaster Vladimir Kramnik in 1997, and here white to move and avoid any exchanges</p>
+      <img src="images/kramnik_1997_position.jpg" alt="Kramnik 1997 position" class="chess-image" style="max-width: 350px;"/>
 
       <p>In this position above, black is lost, because white has managed to get a lot of space for himself. The game started with these following moves : 1.d4 Nf6 , 2.c4 c5, 
       3. d5 e6, 4. Nc3 exd5, 5. cxd5 d6, 6. e4 g6, 7. f4 Bg7, 8. Bb5 +Nfd7 , 9. a4 O-O, 10. Nf3 Nb4 , 
       11. O-O Nb4, 12. Re1 a6,  13 ..... ....... ?</p>
 
-      <p>White enjoys much more central space. Note that black's light square bishop is actually in the way of other pieces. At the moment, white's light squared bishop is under attack by pawn on a6 and has to move.  13. Bc4 has been played from time to time in this game by many players, but actually 13. Bf1 is correct. Why? Because 13. Bc4 gives black time to free his bishop and trade it off 13. ....Nb6 , 14. Be2 Bg4. When black's forces will have more room to move about. </p>
+      <p>White enjoys much more central space. Note that black's light square bishop is actually in the way of other pieces. At the moment, white's light squared bishop is under attack by pawn on a6 and has to move.  13. Bc4 has been played from time to time in this game, but 13. Bf1 is correct. Why? Because 1. Bc4 gives black time to free his bishop and trade it off 13. ....Nb6 , 14. Be2 Bg4. When black's force will have more room to move about. </p>
 
-      <p>But on the other hand, if 13. Bf1 is played, then it avoids this Nf6 move of black to activate its bishop and because of this black is forced to continue suffering the lack of space for his pieces. This idea that the side with more territory or space should avoid unnecessary exchanges / trade off of pieces and might lead one to believe that space won't be much use in endgame since many exchanges would have been made to reach that stage. However, this is simply not the case. And the reality is side with more space / territory almost always has the advantage.</p>
+      <p>But on the other hand, if 13. Bf1 is played, then it avoids this Nf6 move of black, when black is forced to continue suffering the lack of space for his pieces. This idea that the side with more territory or space should avoid unnecessary exchanges / trade off of pieces and might lead one to believe that space won't be much use in endgame since many exchanges would have been made to reach that stage. However, this simple is not the case. And the side with more space almost always has the advantage.</p>
 
       <p>You have learnt about how a side with piece activity, space, tactical advantage, better pawn structures , always have the advantage, to achieve it, is the motive of middlegame phase of the game. In the next lesson, we will talk about middle game and endgame imbalances.</p>
 
@@ -356,150 +267,22 @@
     </div>
   </div>
 
-  <!-- Firebase and App Scripts -->
   <script>
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+    document.addEventListener("DOMContentLoaded", () => {
+      setTimeout(() => {
+        document.getElementById('intro').style.display = 'none';
+        document.body.classList.add('loaded');
+      }, 4000);
+    });
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyBdP3o4MO8ihLfUFBxp0J4o6V3wVRuR-og",
-    authDomain: "korustech-76af9.firebaseapp.com",
-    projectId: "korustech-76af9",
-    storageBucket: "korustech-76af9.firebasestorage.app",
-    messagingSenderId: "221469464979",
-    appId: "1:221469464979:web:eec6dec49aa313ac563066",
-    measurementId: "G-TXE97X3HJB"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-  
-    // Elements
-    const intro = document.getElementById('intro');
-    const authSection = document.getElementById('authSection');
-    const logoutBtn = document.getElementById('logoutBtn');
-
-    const authTitle = document.getElementById('authTitle');
-    const emailInput = document.getElementById('email');
-    const passwordInput = document.getElementById('password');
-    const authBtn = document.getElementById('authBtn');
-    const authToggle = document.getElementById('authToggle');
-    const authMessage = document.getElementById('authMessage');
-
-    // Sections
-    const sections = ['main', 'lessonPage', 'lessonPage2', 'lessonPage3'];
-
-    // State: true = login mode, false = register mode
-    let isLoginMode = true;
-
-    // Hide all content sections
-    function hideAllSections() {
+    function showSection(sectionId) {
+      const sections = ['main', 'lessonPage', 'lessonTwoPage', 'lessonThreePage', 'lessonFourPage'];
       sections.forEach(id => {
         document.getElementById(id).classList.remove('visible');
       });
+      document.getElementById(sectionId).classList.add('visible');
     }
-
-    // Show one content section by id
-    function showSection(id) {
-      hideAllSections();
-      document.getElementById(id).classList.add('visible');
-      window.scrollTo(0, 0);
-    }
-
-    // After intro animation ends, show auth section
-    function showAuth() {
-      intro.style.display = 'none';
-      authSection.classList.add('visible');
-    }
-
-    // Toggle login/register mode
-    authToggle.addEventListener('click', () => {
-      isLoginMode = !isLoginMode;
-      if (isLoginMode) {
-        authTitle.textContent = 'Login';
-        authBtn.textContent = 'Login';
-        authToggle.textContent = "Don't have an account? Register here";
-        emailInput.value = '';
-        passwordInput.value = '';
-        authMessage.textContent = '';
-      } else {
-        authTitle.textContent = 'Register';
-        authBtn.textContent = 'Register';
-        authToggle.textContent = "Already have an account? Login here";
-        emailInput.value = '';
-        passwordInput.value = '';
-        authMessage.textContent = '';
-      }
-    });
-
-    // Handle login/register button click
-    authBtn.addEventListener('click', () => {
-      const email = emailInput.value.trim();
-      const password = passwordInput.value.trim();
-
-      if (!email || !password) {
-        authMessage.textContent = 'Please enter email and password.';
-        return;
-      }
-
-      authMessage.textContent = 'Processing...';
-
-      if (isLoginMode) {
-        // Login
-        auth.signInWithEmailAndPassword(email, password)
-          .then(() => {
-            authMessage.textContent = '';
-          })
-          .catch(err => {
-            authMessage.textContent = err.message;
-          });
-      } else {
-        // Register
-        auth.createUserWithEmailAndPassword(email, password)
-          .then(() => {
-            authMessage.textContent = 'Registration successful! Logging in...';
-          })
-          .catch(err => {
-            authMessage.textContent = err.message;
-          });
-      }
-    });
-
-    // Handle logout
-    logoutBtn.addEventListener('click', () => {
-      auth.signOut();
-    });
-
-    // Listen for auth state changes
-    auth.onAuthStateChanged(user => {
-      if (user) {
-        // User is logged in
-        authSection.classList.remove('visible');
-        logoutBtn.style.display = 'block';
-        showSection('main');
-      } else {
-        // No user logged in
-        logoutBtn.style.display = 'none';
-        hideAllSections();
-        authSection.classList.add('visible');
-      }
-    });
-
-    // Start intro timer: show intro for 3 seconds, then show auth
-    setTimeout(() => {
-      showAuth();
-    }, 3000);
   </script>
-</body>
-</html>
 
 </body>
 </html>
-
